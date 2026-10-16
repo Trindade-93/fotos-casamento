@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Painel · Fotos Thainá & Lucas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Painel de controle: mesma identidade do convite, organizado em blocos de tarefa */
+:root{
+  --papel:#f4f3ea; --papel-2:#e9e8d9; --linha:#d8d7c4; --tinta:#2c2f22; --tinta-2:#5d6150;
+  --oliva:#5f6b2f; --oliva-esc:#46501f; --oliva-clara:#c9cfa6; --erro:#9a3b2a; --ok:#3f6b2f;
+  --serif:"Cormorant",Georgia,serif; --sans:"Jost",system-ui,-apple-system,"Segoe UI",sans-serif; color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --papel:#1c1e15; --papel-2:#26291d; --linha:#3a3e2c; --tinta:#ecebdc; --tinta-2:#b4b7a0;
+    --oliva:#a9b46e; --oliva-esc:#c3cc8c; --oliva-clara:#3b4224; --erro:#e08a74; --ok:#9fcf7f; color-scheme:dark; }
+}
+*{box-sizing:border-box} html,body{margin:0}
+body{background:var(--papel);color:var(--tinta);font:15px/1.55 var(--sans);
+  padding:env(safe-area-inset-top) max(16px,env(safe-area-inset-right)) env(safe-area-inset-bottom) max(16px,env(safe-area-inset-left))}
+main{max-width:920px;margin:0 auto;padding-block:28px 64px;display:grid;gap:18px}
+h1{font:600 2rem/1.1 var(--serif);margin:0}
+h2{font:600 1.35rem/1.2 var(--serif);margin:0 0 10px}
+.topo{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.bloco{background:var(--papel-2);border-radius:14px;padding:18px;min-width:0}
+.dupla{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.btn{appearance:none;border:1px solid var(--oliva);background:var(--oliva);color:var(--papel);font:500 .95rem/1 var(--sans);
+  padding:11px 16px;border-radius:999px;cursor:pointer;min-height:42px}
+.btn.sec{background:transparent;color:var(--oliva-esc)}
+.btn.perigo{background:var(--erro);border-color:var(--erro)}
+.btn[disabled]{opacity:.5;cursor:default}
+.btn:focus-visible,input:focus-visible{outline:3px solid var(--oliva-clara);outline-offset:2px}
+.linha{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+label{display:grid;gap:4px;font-size:.85rem;color:var(--tinta-2)}
+input[type=text],input[type=password]{font:inherit;padding:10px 12px;border-radius:10px;border:1px solid var(--linha);background:var(--papel);color:var(--tinta);width:100%}
+.pilula{display:inline-flex;align-items:center;gap:8px;font-weight:500;padding:6px 12px;border-radius:999px;background:var(--papel)}
+.pilula::before{content:"";width:9px;height:9px;border-radius:50%;background:currentColor}
+.pilula.ok{color:var(--ok)} .pilula.off{color:var(--erro)}
+.link{font:13px/1.4 ui-monospace,Consolas,monospace;word-break:break-all;background:var(--papel);padding:10px;border-radius:8px;user-select:all}
+.num{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px}
+.num div{background:var(--papel);border-radius:10px;padding:10px}
+.num b{display:block;font:600 1.6rem/1 var(--serif);font-variant-numeric:tabular-nums}
+.num span{font-size:.8rem;color:var(--tinta-2)}
+.msg{font-size:.9rem;color:var(--tinta-2);margin:8px 0 0}
+.msg.erro{color:var(--erro)}
+.galeria{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin-top:12px}
+.galeria figure{margin:0;position:relative;border-radius:6px;overflow:hidden;background:var(--papel)}
+.galeria img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.galeria figure.oculta img{opacity:.3}
+.galeria figcaption{font-size:.72rem;padding:4px 6px;display:flex;justify-content:space-between;gap:4px;align-items:center}
+.galeria figcaption button{font:inherit;font-size:.72rem;border:0;background:none;color:var(--oliva-esc);cursor:pointer;text-decoration:underline}
+table{border-collapse:collapse;width:100%;font-size:.88rem;font-variant-numeric:tabular-nums}
+td{padding:4px 0;border-bottom:1px solid var(--linha)}
+.prog{height:6px;background:var(--papel);border-radius:6px;overflow:hidden;margin-top:10px}
+.prog i{display:block;height:100%;width:0;background:var(--oliva);transition:width .2s}
+input[type=range]{width:100%;accent-color:var(--oliva)}
+[hidden]{display:none!important}
+.login{max-width:380px;margin:12vh auto 0}
+</style>
+</head>
+<body>
+<main>
+  <!-- LOGIN -->
+  <section id="tela-login" class="bloco login">
+    <h1>Painel dos noivos</h1>
+    <p class="msg">Acesso restrito à administração das fotos.</p>
+    <form id="form-login" style="display:grid;gap:12px;margin-top:14px">
+      <label>Usuário <input type="text" id="usuario" autocomplete="username" required></label>
+      <label>Senha <input type="password" id="senha" autocomplete="current-password" required></label>
+      <button class="btn" type="submit">Entrar</button>
+      <p class="msg erro" id="login-msg" hidden></p>
+    </form>
+  </section>
+
+  <!-- PAINEL -->
+  <div id="tela-painel" hidden style="display:grid;gap:18px">
+    <div class="topo">
+      <h1>Thainá &amp; Lucas · Painel</h1>
+      <button class="btn sec" id="sair">Sair</button>
+    </div>
+
+    <div class="dupla">
+      <section class="bloco">
+        <h2>Situação do site</h2>
+        <div class="linha"><span class="pilula" id="estado"></span></div>
+        <p class="msg" id="validade"></p>
+        <div class="linha" style="margin-top:10px">
+          <button class="btn perigo" id="desligar">Desligar agora</button>
+          <button class="btn" id="ligar">Religar</button>
+        </div>
+      </section>
+      <section class="bloco">
+        <h2>Link para os convidados</h2>
+        <div class="link" id="link"></div>
+        <div class="linha" style="margin-top:10px">
+          <button class="btn" id="copiar">Copiar link</button>
+          <button class="btn sec" id="novo-link">Gerar novo link (7 dias)</button>
+        </div>
+        <p class="msg">Gerar um novo link invalida o anterior na hora.</p>
+      </section>
+    </div>
+
+    <section class="bloco">
+      <h2>Números</h2>
+      <div class="num">
+        <div><b id="n-fotos">–</b><span>fotos disponíveis</span></div>
+        <div><b id="n-rostos">–</b><span>rostos indexados</span></div>
+        <div><b id="n-buscas">–</b><span>buscas no total</span></div>
+        <div><b id="n-24h">–</b><span>buscas em 24 h</span></div>
+      </div>
+      <details style="margin-top:12px"><summary>Últimas buscas</summary><table id="ultimas"></table></details>
+    </section>
+
+    <div class="dupla">
+      <section class="bloco">
+        <h2>Rigor do reconhecimento</h2>
+        <input type="range" id="limiar" min="0.40" max="0.60" step="0.01">
+        <div class="linha" style="justify-content:space-between;font-size:.8rem;color:var(--tinta-2)"><span>Mais rigoroso</span><span id="limiar-v"></span><span>Mais tolerante</span></div>
+        <p class="msg">Mais rigoroso evita fotos de outras pessoas; mais tolerante acha mais fotos de perfil. Padrão: 0,50.</p>
+        <button class="btn sec" id="salvar-limiar">Salvar</button>
+      </section>
+      <section class="bloco">
+        <h2>Trocar senha</h2>
+        <div style="display:grid;gap:8px">
+          <input type="password" id="senha-atual" placeholder="Senha atual" autocomplete="current-password">
+          <input type="password" id="senha-nova" placeholder="Nova senha (mínimo 8 caracteres)" autocomplete="new-password">
+          <button class="btn sec" id="trocar">Trocar senha</button>
+          <p class="msg" id="senha-msg"></p>
+        </div>
+      </section>
+    </div>
+
+    <section class="bloco">
+      <h2>Enviar fotos para o site</h2>
+      <p class="msg">Selecione a pasta <b>casamento_TODAS</b> (ela deve conter o arquivo <b>indice_site.json</b>). Somente as fotos listadas no índice são enviadas; as fotos só dos noivos ficam de fora.</p>
+      <div class="linha" style="margin-top:10px">
+        <label class="btn" for="pasta" style="display:inline-flex;align-items:center;color:var(--papel)">Selecionar pasta e enviar</label>
+        <input type="file" id="pasta" webkitdirectory directory multiple hidden>
+      </div>
+      <div class="prog"><i id="up-barra"></i></div>
+      <p class="msg" id="up-msg"></p>
+    </section>
+
+    <section class="bloco">
+      <div class="topo"><h2>Todas as fotos do site</h2><button class="btn sec" id="ver-galeria">Mostrar</button></div>
+      <p class="msg">Somente você vê esta galeria. “Ocultar” tira a foto dos resultados dos convidados.</p>
+      <div class="galeria" id="galeria"></div>
+    </section>
+  </div>
+</main>
+
+<script>
+// ====== configuração (preenchida na publicação) ======
+const SUPABASE_URL = "https://zeurfrslgisyxjthlhzu.supabase.co";
+const SUPABASE_KEY = "sb_publishable_1RIjDxQNhsH7x6C5XYakIQ_4eSG2ngh";
+// =====================================================
+const $ = id => document.getElementById(id);
+let sessao = null; try { sessao = sessionStorage.getItem("sessao"); } catch(e){}
+let painel = null;
+
+function cab(extra){ const h = Object.assign({"apikey": SUPABASE_KEY}, extra||{});
+  if (SUPABASE_KEY.startsWith("eyJ")) h.Authorization = "Bearer " + SUPABASE_KEY; return h; }
+async function rpc(nome, corpo){
+  const r = await fetch(SUPABASE_URL + "/rest/v1/rpc/" + nome, {method:"POST", headers:cab({"Content-Type":"application/json"}), body:JSON.stringify(corpo)});
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok){ if (String(j.message||"").includes("SESSAO_INVALIDA")) { sairLocal(); throw new Error("Sessão expirada. Entre novamente."); } throw new Error(j.message || ("Erro " + r.status)); }
+  return j;
+}
+const baseSite = () => location.href.replace(/admin\.html.*$/, "").replace(/[?#].*$/, "");
+const urlMini = a => SUPABASE_URL + "/storage/v1/object/public/fotos/t/" + a + ".jpg";
+const fmt = d => new Date(d).toLocaleString("pt-BR", {dateStyle:"short", timeStyle:"short"});
+
+function sairLocal(){ sessao = null; try { sessionStorage.removeItem("sessao"); } catch(e){} $("tela-painel").hidden = true; $("tela-login").hidden = false; }
+
+$("form-login").onsubmit = async e => {
+  e.preventDefault(); const m = $("login-msg"); m.hidden = true;
+  try {
+    const r = await rpc("admin_login", {p_usuario: $("usuario").value.trim(), p_senha: $("senha").value});
+    if (!r.ok){ m.textContent = r.motivo === "bloqueado" ? "Muitas tentativas erradas. Aguarde 15 minutos." : "Usuário ou senha incorretos."; m.hidden = false; return; }
+    sessao = r.sessao; try { sessionStorage.setItem("sessao", sessao); } catch(e){}
+    $("senha").value = ""; carregar();
+  } catch(err){ m.textContent = err.message; m.hidden = false; }
+};
+
+async function carregar(){
+  try { painel = await rpc("admin_painel", {p_sessao: sessao}); } catch(e){ $("login-msg").textContent = e.message; $("login-msg").hidden = false; return; }
+  $("tela-login").hidden = true; $("tela-painel").hidden = false;
+  const expirado = new Date(painel.expira_em) < new Date();
+  const no_ar = painel.ativo && !expirado;
+  $("estado").className = "pilula " + (no_ar ? "ok" : "off");
+  $("estado").textContent = !painel.ativo ? "Desligado" : expirado ? "Link expirado" : "No ar";
+  $("validade").textContent = (expirado ? "O link expirou em " : "O link vale até ") + fmt(painel.expira_em) + ".";
+  $("desligar").hidden = !painel.ativo; $("ligar").hidden = painel.ativo;
+  $("link").textContent = baseSite() + "?c=" + painel.token;
+  $("n-fotos").textContent = painel.fotos - painel.ocultas; $("n-rostos").textContent = painel.rostos;
+  $("n-buscas").textContent = painel.buscas_total; $("n-24h").textContent = painel.buscas_24h;
+  $("limiar").value = painel.limiar; $("limiar-v").textContent = Number(painel.limiar).toFixed(2).replace(".", ",");
+  const t = $("ultimas"); t.textContent = "";
+  painel.ultimas.forEach(u => { const tr = t.insertRow(); tr.insertCell().textContent = fmt(u.em); tr.insertCell().textContent = u.resultados + " foto(s)"; });
+}
+
+$("sair").onclick = async () => { try { await rpc("admin_sair", {p_sessao: sessao}); } catch(e){} sairLocal(); };
+$("desligar").onclick = async () => { await rpc("admin_definir_ativo", {p_sessao: sessao, p_ativo: false}); carregar(); };
+$("ligar").onclick = async () => { await rpc("admin_definir_ativo", {p_sessao: sessao, p_ativo: true}); carregar(); };
+$("novo-link").onclick = async () => {
+  const b = $("novo-link");
+  if (b.dataset.conf !== "1"){ b.dataset.conf = "1"; b.textContent = "Confirmar: o link atual deixa de funcionar"; setTimeout(() => { b.dataset.conf = ""; b.textContent = "Gerar novo link (7 dias)"; }, 6000); return; }
+  b.dataset.conf = ""; b.textContent = "Gerar novo link (7 dias)";
+  await rpc("admin_novo_link", {p_sessao: sessao, p_dias: 7}); carregar();
+};
+$("copiar").onclick = async () => { try { await navigator.clipboard.writeText($("link").textContent); $("copiar").textContent = "Copiado!"; }
+  catch(e){ const s = getSelection(), r = document.createRange(); r.selectNodeContents($("link")); s.removeAllRanges(); s.addRange(r); $("copiar").textContent = "Selecionado: use Ctrl+C"; }
+  setTimeout(() => $("copiar").textContent = "Copiar link", 2500); };
+$("limiar").oninput = e => $("limiar-v").textContent = Number(e.target.value).toFixed(2).replace(".", ",");
+$("salvar-limiar").onclick = async () => { await rpc("admin_limiar", {p_sessao: sessao, p_limiar: Number($("limiar").value)}); carregar(); };
+$("trocar").onclick = async () => {
+  const r = await rpc("admin_trocar_senha", {p_sessao: sessao, p_atual: $("senha-atual").value, p_nova: $("senha-nova").value});
+  $("senha-msg").textContent = r.ok ? "Senha alterada." : r.motivo === "curta" ? "A nova senha precisa ter ao menos 8 caracteres." : "Senha atual incorreta.";
+  if (r.ok){ $("senha-atual").value = ""; $("senha-nova").value = ""; }
+};
+
+$("ver-galeria").onclick = async () => {
+  const g = $("galeria"); g.textContent = "Carregando…";
+  const lista = await rpc("admin_listar_fotos", {p_sessao: sessao}); g.textContent = "";
+  lista.forEach(f => {
+    const fig = document.createElement("figure"); if (f.oculta) fig.className = "oculta";
+    const im = document.createElement("img"); im.loading = "lazy"; im.src = urlMini(f.arquivo); im.alt = f.original;
+    const cap = document.createElement("figcaption"); const nome = document.createElement("span");
+    nome.textContent = f.original.replace(/^.*_(\d{4}).*$/, "nº $1");
+    const bt = document.createElement("button"); bt.textContent = f.oculta ? "Mostrar" : "Ocultar";
+    bt.onclick = async () => { f.oculta = !f.oculta; await rpc("admin_ocultar", {p_sessao: sessao, p_arquivo: f.arquivo, p_oculta: f.oculta});
+      fig.className = f.oculta ? "oculta" : ""; bt.textContent = f.oculta ? "Mostrar" : "Ocultar"; };
+    cap.append(nome, bt); fig.append(im, cap); g.appendChild(fig);
+  });
+};
+
+// ---------- envio das fotos ----------
+async function miniatura(arquivo){
+  const bmp = await createImageBitmap(arquivo);
+  const k = Math.min(1, 640 / Math.max(bmp.width, bmp.height));
+  const c = document.createElement("canvas"); c.width = Math.round(bmp.width*k); c.height = Math.round(bmp.height*k);
+  c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height); bmp.close && bmp.close();
+  return new Promise(ok => c.toBlob(ok, "image/jpeg", 0.82));
+}
+async function enviar(caminho, blob){
+  const r = await fetch(SUPABASE_URL + "/storage/v1/object/fotos/" + caminho, {method:"POST",
+    headers: cab({"Content-Type":"image/jpeg", "x-upsert":"false", "cache-control":"31536000"}), body: blob});
+  if (r.ok) return;
+  const t = await r.text();
+  if (r.status === 409 || /exists|Duplicate/i.test(t)) return; // já enviado antes
+  throw new Error("Falha ao enviar " + caminho + ": " + r.status + " " + t.slice(0,120));
+}
+$("pasta").onchange = async e => {
+  const arquivos = Array.from(e.target.files); const msg = $("up-msg"), barra = $("up-barra");
+  const idx = arquivos.find(f => f.name === "indice_site.json");
+  if (!idx){ msg.textContent = "Não encontrei o arquivo indice_site.json nessa pasta."; msg.className = "msg erro"; return; }
+  msg.className = "msg";
+  const indice = JSON.parse(await idx.text());
+  const porNome = new Map(arquivos.map(f => [f.name, f]));
+  const faltando = indice.filter(i => !porNome.has(i.original));
+  if (faltando.length){ msg.textContent = "Faltam " + faltando.length + " fotos do índice nessa pasta (ex.: " + faltando[0].original + ")."; msg.className = "msg erro"; return; }
+  try {
+    await rpc("admin_abrir_upload", {p_sessao: sessao, p_minutos: 120});
+    const lote = [];
+    for (let i = 0; i < indice.length; i++){
+      const it = indice[i], f = porNome.get(it.original);
+      msg.textContent = "Enviando " + (i+1) + " de " + indice.length + ": " + it.original;
+      await enviar(it.arquivo + ".jpg", f);
+      await enviar("t/" + it.arquivo + ".jpg", await miniatura(f));
+      lote.push(Object.assign({}, it, {bytes: f.size}));
+      if (lote.length === 20 || i === indice.length - 1){ await rpc("admin_importar", {p_sessao: sessao, p_dados: lote}); lote.length = 0; }
+      barra.style.width = ((i+1) / indice.length * 100).toFixed(1) + "%";
+    }
+    await rpc("admin_abrir_upload", {p_sessao: sessao, p_minutos: 0});
+    msg.textContent = "Concluído: " + indice.length + " fotos enviadas e indexadas.";
+    carregar();
+  } catch(err){
+    msg.textContent = err.message + " — você pode selecionar a pasta de novo; o envio continua de onde parou."; msg.className = "msg erro";
+  }
+};
+
+if (sessao) carregar();
+</script>
+</body>
+</html>
