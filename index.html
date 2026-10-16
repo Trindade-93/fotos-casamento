@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Thainá & Lucas · Fotos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Convite em papel: coluna única, oliva sobre creme esverdeado; a selfie é o gesto central */
+:root{
+  --papel:#f4f3ea; --papel-2:#e9e8d9; --tinta:#2c2f22; --tinta-2:#5d6150;
+  --oliva:#5f6b2f; --oliva-esc:#46501f; --oliva-clara:#c9cfa6; --erro:#9a3b2a;
+  --serif:"Cormorant",Georgia,"Times New Roman",serif;
+  --sans:"Jost",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --papel:#1c1e15; --papel-2:#26291d; --tinta:#ecebdc; --tinta-2:#b4b7a0;
+    --oliva:#a9b46e; --oliva-esc:#c3cc8c; --oliva-clara:#3b4224; --erro:#e08a74; color-scheme: dark; }
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--papel);color:var(--tinta);font:16px/1.6 var(--sans);
+  padding:env(safe-area-inset-top) max(16px,env(safe-area-inset-right)) env(safe-area-inset-bottom) max(16px,env(safe-area-inset-left));}
+main{max-width:980px;margin:0 auto;padding-block:40px 64px}
+.cabeca{text-align:center;display:grid;gap:6px;justify-items:center}
+.ramo{width:120px;height:auto;color:var(--oliva)}
+h1{font:600 clamp(2.6rem,9vw,4.4rem)/1 var(--serif);margin:8px 0 0;letter-spacing:.01em;text-wrap:balance}
+h1 .e{font-style:italic;font-weight:500;color:var(--oliva)}
+.data{font:500 .8rem/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:var(--tinta-2)}
+.cartao{max-width:520px;margin:36px auto 0;text-align:center;display:grid;gap:18px}
+.cartao h2{font:500 1.7rem/1.2 var(--serif);margin:0;text-wrap:balance}
+.cartao p{margin:0;color:var(--tinta-2)}
+.botoes{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn{appearance:none;border:1px solid var(--oliva);background:var(--oliva);color:var(--papel);
+  font:500 1rem/1 var(--sans);padding:15px 22px;border-radius:999px;cursor:pointer;display:inline-flex;gap:8px;align-items:center;justify-content:center;min-height:50px}
+.btn.sec{background:transparent;color:var(--oliva-esc)}
+.btn:focus-visible{outline:3px solid var(--oliva-clara);outline-offset:2px}
+.btn[disabled]{opacity:.55;cursor:default}
+.nota{font-size:.85rem;color:var(--tinta-2);border-top:1px solid var(--papel-2);padding-top:14px}
+.aviso{padding:14px 16px;border-radius:12px;background:var(--papel-2);color:var(--tinta)}
+.aviso.erro{border-left:3px solid var(--erro)}
+.prog{height:4px;background:var(--papel-2);border-radius:4px;overflow:hidden}
+.prog i{display:block;height:100%;width:30%;background:var(--oliva);animation:vai 1.2s ease-in-out infinite}
+@keyframes vai{0%{transform:translateX(-100%)}100%{transform:translateX(340%)}}
+@media (prefers-reduced-motion:reduce){.prog i{animation:none;width:100%}}
+.selfie{width:112px;height:112px;border-radius:50%;object-fit:cover;margin:0 auto;border:3px solid var(--oliva-clara)}
+.resumo{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin:40px 0 16px;border-bottom:1px solid var(--papel-2);padding-bottom:14px}
+.resumo h3{font:500 1.6rem/1.1 var(--serif);margin:0}
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.grade button{all:unset;cursor:pointer;display:block;aspect-ratio:1;border-radius:6px;overflow:hidden;background:var(--papel-2)}
+.grade button:focus-visible{outline:3px solid var(--oliva)}
+.grade img{width:100%;height:100%;object-fit:cover;display:block}
+.visor{position:fixed;inset:0;background:rgba(18,20,12,.94);display:grid;grid-template-rows:1fr auto;z-index:20;
+  padding:env(safe-area-inset-top) max(12px,env(safe-area-inset-right)) env(safe-area-inset-bottom) max(12px,env(safe-area-inset-left))}
+.visor img{max-width:100%;max-height:100%;margin:auto;object-fit:contain;align-self:center;justify-self:center;min-height:0}
+.visor .barra{display:flex;gap:10px;justify-content:center;padding:12px 0 16px;flex-wrap:wrap}
+.visor .btn.sec{color:#e8ead7;border-color:#e8ead7}
+[hidden]{display:none!important}
+footer{text-align:center;margin-top:56px;font-size:.8rem;color:var(--tinta-2)}
+</style>
+</head>
+<body>
+<main>
+  <header class="cabeca">
+    <svg class="ramo" viewBox="0 0 120 34" fill="none" aria-hidden="true">
+      <path d="M4 17h112" stroke="currentColor" stroke-width="1.2"/>
+      <g fill="currentColor">
+        <ellipse cx="30" cy="11" rx="7" ry="2.6" transform="rotate(-28 30 11)"/><ellipse cx="30" cy="23" rx="7" ry="2.6" transform="rotate(28 30 23)"/>
+        <ellipse cx="46" cy="11" rx="7" ry="2.6" transform="rotate(-28 46 11)"/><ellipse cx="46" cy="23" rx="7" ry="2.6" transform="rotate(28 46 23)"/>
+        <circle cx="60" cy="17" r="3.4"/>
+        <ellipse cx="74" cy="11" rx="7" ry="2.6" transform="rotate(28 74 11)"/><ellipse cx="74" cy="23" rx="7" ry="2.6" transform="rotate(-28 74 23)"/>
+        <ellipse cx="90" cy="11" rx="7" ry="2.6" transform="rotate(28 90 11)"/><ellipse cx="90" cy="23" rx="7" ry="2.6" transform="rotate(-28 90 23)"/>
+      </g>
+    </svg>
+    <h1>Thainá <span class="e">&amp;</span> Lucas</h1>
+    <div class="data">15 · 08 · 2026</div>
+  </header>
+
+  <!-- carregando -->
+  <section class="cartao" id="tela-carregando">
+    <p>Preparando sua página…</p>
+    <div class="prog"><i></i></div>
+  </section>
+
+  <!-- link inválido / expirado / desligado -->
+  <section class="cartao" id="tela-fechado" hidden>
+    <h2 id="fechado-titulo">Este link não está disponível</h2>
+    <p id="fechado-texto">Peça um novo link aos noivos.</p>
+  </section>
+
+  <!-- busca -->
+  <section class="cartao" id="tela-busca" hidden>
+    <h2>Encontre as suas fotos do nosso casamento</h2>
+    <p>Envie uma selfie. Vamos procurar você entre as fotos da festa e mostrar só aquelas em que você aparece.</p>
+    <div class="botoes">
+      <label class="btn" for="cam">Tirar selfie</label>
+      <label class="btn sec" for="gal">Escolher uma foto</label>
+    </div>
+    <input id="cam" type="file" accept="image/*" capture="user" hidden>
+    <input id="gal" type="file" accept="image/*" hidden>
+    <p class="nota">Use uma foto só sua, de frente, com boa luz e sem óculos escuros. A selfie é analisada no seu próprio aparelho e <strong>não é enviada nem guardada</strong>. Para a busca, vai apenas uma sequência de números que descreve o rosto.</p>
+  </section>
+
+  <!-- processando -->
+  <section class="cartao" id="tela-processando" hidden>
+    <img class="selfie" id="selfie-mini" alt="Sua selfie">
+    <p id="status-texto">Analisando sua selfie…</p>
+    <div class="prog"><i></i></div>
+  </section>
+
+  <!-- mensagem de erro na busca -->
+  <section class="cartao" id="tela-erro" hidden>
+    <div class="aviso erro" id="erro-texto"></div>
+    <div class="botoes"><button class="btn" id="tentar">Tentar com outra foto</button></div>
+  </section>
+
+  <!-- resultados -->
+  <section id="tela-resultado" hidden>
+    <div class="resumo">
+      <h3 id="resumo-titulo"></h3>
+      <div class="botoes">
+        <button class="btn" id="baixar-tudo">Baixar todas (.zip)</button>
+        <button class="btn sec" id="nova-busca">Nova busca</button>
+      </div>
+    </div>
+    <p class="aviso" id="zip-status" hidden></p>
+    <div class="grade" id="grade"></div>
+  </section>
+
+  <footer>Com carinho, Thainá e Lucas</footer>
+</main>
+
+<div class="visor" id="visor" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <img id="visor-img" alt="">
+  <div class="barra">
+    <button class="btn sec" id="ant" aria-label="Foto anterior">‹</button>
+    <button class="btn" id="baixar-uma">Baixar esta foto</button>
+    <button class="btn sec" id="prox" aria-label="Próxima foto">›</button>
+    <button class="btn sec" id="fechar">Fechar</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script>
+// ====== configuração (preenchida na publicação) ======
+const SUPABASE_URL = "https://zeurfrslgisyxjthlhzu.supabase.co";
+const SUPABASE_KEY = "sb_publishable_1RIjDxQNhsH7x6C5XYakIQ_4eSG2ngh";
+const FACEAPI = "https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.15/dist/face-api.js";
+const MODELOS = "https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.15/model/";
+// =====================================================
+
+const $ = id => document.getElementById(id);
+const telas = ["carregando","fechado","busca","processando","erro","resultado"];
+function mostrar(t){ telas.forEach(n => $("tela-"+n).hidden = n !== t); }
+const token = new URLSearchParams(location.search).get("c") || "";
+let fotos = [], atual = 0;
+
+function cabecalhos(){
+  const h = {"apikey": SUPABASE_KEY, "Content-Type": "application/json"};
+  if (SUPABASE_KEY.startsWith("eyJ")) h.Authorization = "Bearer " + SUPABASE_KEY;
+  return h;
+}
+async function rpc(nome, corpo){
+  const r = await fetch(SUPABASE_URL + "/rest/v1/rpc/" + nome, {method:"POST", headers:cabecalhos(), body:JSON.stringify(corpo)});
+  if (!r.ok) throw new Error("Falha de comunicação ("+r.status+")");
+  return r.json();
+}
+const urlFoto = a => SUPABASE_URL + "/storage/v1/object/public/fotos/" + a + ".jpg";
+const urlMini = a => SUPABASE_URL + "/storage/v1/object/public/fotos/t/" + a + ".jpg";
+
+const motivos = {
+  expirado: ["Este link expirou", "O acesso às fotos ficou aberto por um período limitado. Peça um novo link aos noivos."],
+  link_invalido: ["Este link não está disponível", "Confira se o endereço está completo ou peça um novo link aos noivos."],
+  desativado: ["As fotos estão indisponíveis no momento", "Os noivos pausaram o acesso. Tente mais tarde."],
+};
+function fechado(m){ const [t,x] = motivos[m] || motivos.link_invalido; $("fechado-titulo").textContent=t; $("fechado-texto").textContent=x; mostrar("fechado"); }
+
+(async function iniciar(){
+  if (!token) return fechado("link_invalido");
+  try {
+    const s = await rpc("status_site", {p_token: token});
+    if (!s.ok) return fechado(s.motivo);
+    mostrar("busca");
+    carregarIA(); // começa a baixar a IA em segundo plano
+  } catch(e){ fechado("desativado"); }
+})();
+
+let iaPronta = null;
+function carregarIA(){
+  if (iaPronta) return iaPronta;
+  iaPronta = new Promise((ok, falha) => {
+    const s = document.createElement("script"); s.src = FACEAPI;
+    s.onload = async () => {
+      try {
+        await faceapi.tf.ready();
+        await Promise.all([
+          faceapi.nets.ssdMobilenetv1.loadFromUri(MODELOS),
+          faceapi.nets.faceLandmark68Net.loadFromUri(MODELOS),
+          faceapi.nets.faceRecognitionNet.loadFromUri(MODELOS),
+        ]);
+        ok();
+      } catch(e){ falha(e); }
+    };
+    s.onerror = () => falha(new Error("Não foi possível carregar o reconhecimento facial."));
+    document.head.appendChild(s);
+  });
+  iaPronta.catch(() => { iaPronta = null; });
+  return iaPronta;
+}
+
+function erro(msg){ $("erro-texto").textContent = msg; mostrar("erro"); }
+
+async function reduzir(arquivo){
+  const bmp = await createImageBitmap(arquivo);
+  const lado = 1280, k = Math.min(1, lado / Math.max(bmp.width, bmp.height));
+  const c = document.createElement("canvas");
+  c.width = Math.round(bmp.width*k); c.height = Math.round(bmp.height*k);
+  c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
+  return c;
+}
+
+async function processar(arquivo){
+  if (!arquivo) return;
+  mostrar("processando");
+  $("selfie-mini").src = URL.createObjectURL(arquivo);
+  $("status-texto").textContent = "Carregando o reconhecimento facial…";
+  try { await carregarIA(); } catch(e){ return erro("Não foi possível carregar o reconhecimento facial. Verifique sua internet e tente de novo."); }
+  $("status-texto").textContent = "Analisando sua selfie…";
+  let canvas;
+  try { canvas = await reduzir(arquivo); } catch(e){ return erro("Não consegui abrir essa imagem. Tente outra foto."); }
+  const achados = await faceapi.detectAllFaces(canvas, new faceapi.SsdMobilenetv1Options({minConfidence:0.5}))
+    .withFaceLandmarks().withFaceDescriptors();
+  if (!achados.length) return erro("Não encontrei um rosto nessa foto. Tente uma selfie de frente, com boa luz.");
+  const maior = achados.sort((a,b) => b.detection.box.area - a.detection.box.area)[0];
+  const desc = Array.from(maior.descriptor);
+  $("status-texto").textContent = "Procurando você nas fotos do casamento…";
+  let r;
+  try { r = await rpc("buscar_fotos", {p_token: token, p_desc: desc}); }
+  catch(e){ return erro("Não consegui falar com o servidor agora. Tente novamente em instantes."); }
+  if (!r.ok){
+    if (r.motivo === "muitas_buscas") return erro("Muitas pessoas estão buscando ao mesmo tempo. Aguarde um minuto e tente de novo.");
+    if (motivos[r.motivo]) return fechado(r.motivo);
+    return erro("Algo deu errado na busca. Tente outra foto.");
+  }
+  fotos = r.fotos || [];
+  if (!fotos.length) return erro("Não encontrei você nas fotos com essa selfie. Tente outra foto: de frente, bem iluminada e sem óculos escuros.");
+  mostrarResultado();
+}
+
+function mostrarResultado(){
+  $("resumo-titulo").textContent = fotos.length === 1 ? "Encontramos 1 foto sua" : "Encontramos " + fotos.length + " fotos suas";
+  const g = $("grade"); g.textContent = "";
+  fotos.forEach((f, i) => {
+    const b = document.createElement("button");
+    b.setAttribute("aria-label", "Ampliar foto " + (i+1));
+    const im = document.createElement("img"); im.loading = "lazy"; im.alt = ""; im.src = urlMini(f.arquivo);
+    b.appendChild(im); b.onclick = () => abrir(i); g.appendChild(b);
+  });
+  $("zip-status").hidden = true;
+  mostrar("resultado");
+}
+
+function abrir(i){ atual = (i + fotos.length) % fotos.length; $("visor-img").src = urlMini(fotos[atual].arquivo);
+  const alta = new Image(); const alvo = atual; alta.onload = () => { if (alvo === atual) $("visor-img").src = alta.src; }; alta.src = urlFoto(fotos[atual].arquivo);
+  $("visor").hidden = false; }
+$("fechar").onclick = () => $("visor").hidden = true;
+$("ant").onclick = () => abrir(atual-1);
+$("prox").onclick = () => abrir(atual+1);
+document.addEventListener("keydown", e => { if ($("visor").hidden) return;
+  if (e.key === "Escape") $("visor").hidden = true; if (e.key === "ArrowLeft") abrir(atual-1); if (e.key === "ArrowRight") abrir(atual+1); });
+
+function salvar(blob, nome){ const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = nome;
+  document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 4000); }
+const nomeArquivo = i => "casamento-thaina-lucas-" + String(i+1).padStart(3,"0") + ".jpg";
+
+$("baixar-uma").onclick = async () => {
+  const b = $("baixar-uma"); b.disabled = true; b.textContent = "Baixando…";
+  try { const r = await fetch(urlFoto(fotos[atual].arquivo)); salvar(await r.blob(), nomeArquivo(atual)); }
+  catch(e){ alert("Não foi possível baixar agora."); }
+  b.disabled = false; b.textContent = "Baixar esta foto";
+};
+
+$("baixar-tudo").onclick = async () => {
+  const b = $("baixar-tudo"), st = $("zip-status"); b.disabled = true; st.hidden = false;
+  try {
+    const zip = new JSZip();
+    for (let i = 0; i < fotos.length; i++){
+      st.textContent = "Preparando o arquivo… " + (i+1) + " de " + fotos.length;
+      const r = await fetch(urlFoto(fotos[i].arquivo)); zip.file(nomeArquivo(i), await r.blob());
+    }
+    st.textContent = "Compactando…";
+    const blob = await zip.generateAsync({type:"blob", compression:"STORE"});
+    salvar(blob, "fotos-casamento-thaina-lucas.zip");
+    st.textContent = "Pronto! O download começou.";
+  } catch(e){ st.textContent = "Não foi possível gerar o arquivo agora. Tente baixar as fotos uma a uma."; }
+  b.disabled = false;
+};
+
+$("cam").onchange = e => processar(e.target.files[0]);
+$("gal").onchange = e => processar(e.target.files[0]);
+$("tentar").onclick = () => { $("cam").value = ""; $("gal").value = ""; mostrar("busca"); };
+$("nova-busca").onclick = () => { $("cam").value = ""; $("gal").value = ""; fotos = []; mostrar("busca"); };
+</script>
+</body>
+</html>
